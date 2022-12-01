@@ -5,9 +5,135 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prévention contre le Sida</title>
-    <link rel="stylesheet" href="/assets/style.css" integrity="">
+    <link rel="stylesheet" href="/assets/style.css" integrity="sha384-10pLN2vrTfMoOGJHQi4xIMvW8LJpCcaEAy3Wy6Sys4y8xE7tHTxf+NJofdZqgiYY">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div class="card active" id="landingCard">
+            <div class="container">
+                <h1 class="title">Prévention pour le Sida</h1>
+            </div>
+            <div class="menu">
+                <div class="left">
+                    <button class="settings"><i class="fas fa-cog"></i></button>
+                    <button class="leaderboard"><i class="fas fa-trophy"></i></button>
+                </div>
+                <div class="right">
+                    <input type="text" name="nickname" placeholder="Pseudonyme..." />
+                    <button class="start"><i class="fas fa-play"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="boardCard">
+            <canvas id="board"></canvas>
+            <h1 id="score">Score: <span class="value value-score"></span></h1>
+        </div>
+        <div id="modals">
+            <div class="modal settings">
+                <div class="modal-header">
+                    <h1>Paramètres</h1>
+                    <button class="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="left">
+                            <p>Muet</p>
+                        </div>
+                        <div class="right">
+                            <button class="audio"><i class="value value-muted"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Volume</p>
+                        </div>
+                        <div class="right">
+                            <span class="value value-volume"></span>
+                            <button class="decrement-volume"><i class="fas fa-minus"></i></button>
+                            <button class="increment-volume"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Largeur de la grille</p>
+                        </div>
+                        <div class="right">
+                            <span class="value value-gridsize-x"></span>
+                            <button class="decrement-gridsize-x"><i class="fas fa-minus"></i></button>
+                            <button class="increment-gridsize-x"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Hauteur de la grille</p>
+                        </div>
+                        <div class="right">
+                            <span class="value value-gridsize-y"></span>
+                            <button class="decrement-gridsize-y"><i class="fas fa-minus"></i></button>
+                            <button class="increment-gridsize-y"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Charger une configuration</p>
+                        </div>
+                        <div class="right">
+                            <label class="button" for="configuration"><i class="fas fa-upload"></i></label>
+                            <input id="configuration" type="file" accept="application/json" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Supprimer le cache local</p>
+                        </div>
+                        <div class="right">
+                            <button class="delete-local-cache"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Réalisé par</p>
+                        </div>
+                        <div class="right">
+                            <p>Guilhem Cros & Jonathan Montmain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal leaderboard">
+                <div class="modal-header">
+                    <h1>Classement</h1>
+                    <button class="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body value value-leaderboard"></div>
+            </div>
+            <div class="modal gameover">
+                <div class="modal-header">
+                    <h1>Perdu...</h1>
+                    <button class="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="left">
+                            <p>Nom d'utilisateur</p>
+                        </div>
+                        <div class="right">
+                            <p class="value value-username"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="left">
+                            <p>Score</p>
+                        </div>
+                        <div class="right">
+                            <p class="value value-score"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/script.js" integrity="sha384-VBfGTg91HH7R994ehdNuFec+Bi/iD++zj17DN8kQGjvRgBunQa+gmuGEAiIsWrcM"></script>
 </body>
 </html>
