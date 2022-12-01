@@ -66,8 +66,7 @@ html, body {
     margin: 10px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
-    font-size: 25pt;
-    color: #0020CC;
+    fill: #0020CC;
     border-radius: 20px;
     box-shadow: 8px 8px #0020CC;
     cursor: pointer;
@@ -76,12 +75,12 @@ html, body {
 #landingCard .menu button:hover {
     background-color: #3060FF;
     outline: 2px solid #fff;
-    color: #fff;
+    fill: #fff;
 }
 
 #landingCard .menu button.active {
     background-color: #3060FF;
-    color: #fff;
+    fill: #fff;
 }
 
 #landingCard .menu input {
