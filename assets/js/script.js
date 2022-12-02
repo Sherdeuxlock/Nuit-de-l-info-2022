@@ -509,6 +509,8 @@ const checkCollisions = () => {
             food[1] = newPos[1];
             setModalOpened("question", true);
             slowed = true;
+            setTemplateValues("question-title");
+            setTemplateValues("question-responses");
             setTemplateValues("score");
         }
     }
