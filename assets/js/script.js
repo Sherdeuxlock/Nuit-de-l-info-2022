@@ -553,9 +553,7 @@ const drawBoard = () => {
 
     for (let i = 0; i < settings.snake.length; i++) {
         if (i == 0) {
-            context.rotate(Math.PI);
-            context.drawImage(head, settings.snake[0][0] * unit, settings.snake[0][1] * unit, unit, unit);
-            context.restore();
+            context.drawImage(head, settings.snake[0][0] * unit, -settings.snake[0][1] * unit, unit, unit);
         }
     }
 };
