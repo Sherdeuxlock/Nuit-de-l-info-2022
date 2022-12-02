@@ -51,6 +51,15 @@ let alive = false;
 const head = new Image();
 head.src = "/assets/images/snake_head.webp";
 
+const body = new Image();
+body.src = "/assets/images/snake_body.webp";
+
+const bodyr = new Image();
+bodyr.src = "/assets/images/snake_body_r.webp";
+
+const tail = new Image();
+tail.src = "/assets/images/snake_tail.webp";
+
 /**
  * Sets up modals
  */
@@ -553,7 +562,15 @@ const drawBoard = () => {
 
     for (let i = 0; i < settings.snake.length; i++) {
         if (i == 0) {
-            context.drawImage(head, settings.snake[0][0] * unit, -settings.snake[0][1] * unit, unit, unit);
+            context.drawImage(head, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+        } else if (i == settings.snake - 1) {
+            context.drawImage(tail, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+        } else {
+            if (settings.snake[i + 1][0] == settings.snake[i - 1][0] && settings.snake[i + 1][0] == settings.snake[i - 1][0]) {
+                context.drawImage(bodyr, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            } else {
+                context.drawImage(body, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            }
         }
     }
 };
