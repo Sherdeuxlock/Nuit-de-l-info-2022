@@ -48,6 +48,9 @@ let sounds = [];
 /** @type {boolean} */
 let alive = false;
 
+/** @type {boolean} */
+let slowed = false;
+
 const images = {
     head: {
         left: new Image(),
@@ -562,7 +565,8 @@ const checkCollisions = () => {
             let newPos = getEmptyCoord();
             food[0] = newPos[0];
             food[1] = newPos[1];
-            score++;
+            setModalOpened("question", true);
+            slowed = true;
             setTemplateValues("score");
         }
     }
@@ -575,7 +579,7 @@ const updateBoard = () => {
     updateMovements();
     checkCollisions();
     drawBoard();
-    if (alive) setTimeout(updateBoard, Math.max(settings.delay - 2 * score, 10));
+    if (alive) setTimeout(updateBoard, Math.max(settings.delay - 2 * score, 10) * (slowed ? 5 : 1));
 };
 
 /**
