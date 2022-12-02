@@ -572,11 +572,11 @@ const drawBoard = () => {
             if (checker[0] == settings.snake[i][0] && checker[1] == settings.snake[i][1]) {
                 checker = settings.snake[i - 2];
             }
-            if (settings.snake[i][0] > settings.snake[i - 1][0]) {
+            if (settings.snake[i][0] > checker[0]) {
                 context.drawImage(images.tail.left, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
-            } else if (settings.snake[i][0] < settings.snake[i - 1][0]) {
+            } else if (settings.snake[i][0] < checker[0]) {
                 context.drawImage(images.tail.right, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
-            } else if (settings.snake[i][1] > settings.snake[i - 1][1]) {
+            } else if (settings.snake[i][1] > checker[1]) {
                 context.drawImage(images.tail.up, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
             } else {
                 context.drawImage(images.tail.down, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
