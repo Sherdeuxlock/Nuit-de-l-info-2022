@@ -10,6 +10,9 @@ const board = document.getElementById("board");
 /** @type {string} */
 let username;
 
+/** @type {number} */
+let question = 0;
+
 /**
  * @typedef {{
  *  dimensions: [number, number],
@@ -18,6 +21,13 @@ let username;
  *  foods: [number, number][],
  *  snake: [number, number][],
  *  direction: "up" | "down" | "left" | "right",
+ *  questions: {
+ *    question: string,
+ *    answers: string[],
+ *    correctAnswer: number,
+ *    explanation: string,
+ *    link: string,
+ *  }[],
  * }} Settings
  * @type {Settings}
  */
@@ -249,6 +259,39 @@ const setTemplateValues = (type = undefined) => {
         case "score":
             document.querySelectorAll(".value.value-score").forEach((element) => element.textContent = score);
             if (type) break;
+        case "question-title":
+            document.querySelectorAll(".value.value-question-title").forEach((element) => element.textContent = settings.questions[question].question);
+            if (type) break;
+        case "question-responses":
+            document.querySelectorAll(".value.value-question-responses").forEach((element) => {
+                element.innerHTML = "";
+                for (let i = 0; i < settings.questions[question].answers.length; i++) {
+                    let container = document.createElement("div");
+                    let left = document.createElement("div");
+                    let right = document.createElement("div");
+                    left.classList.add("left");
+                    right.classList.add("right");
+
+                    let text = document.createElement("p");
+                    text.textContent = settings.questions[question].answers[i];
+                    left.append(text);
+
+                    let button = document.createElement("button");
+                    button.addEventListener("click", () => {
+                        score++;
+                        setModalOpened("question", false);
+                        slowed = false;
+                        question = (question + 1) % settings.questions.length;
+                    });
+                    button.textContent = "Valider";
+                    right.append(button);
+
+                    container.append(left);
+                    container.append(right);
+                    element.append();
+                }
+            });
+            if (type) break;
     }
 };
 
@@ -276,15 +319,29 @@ const startGame = () => {
         });
     }
 
-    resizeBoard();
+    if (settings.questions.length == 0) {
+        fetch("/assets/json/questions.json").then(c => c.json()).then((data) => {
+            resizeBoard();
 
-    setTemplateValues("score");
+            setTemplateValues("score");
 
-    if (settings.foods.length == 0) settings.foods = [getEmptyCoord()];
-    if (settings.snake.length == 0) settings.snake = [getEmptyCoord()];
-    if (settings.snake.length == 1) settings.snake.push([settings.snake[0][0] + 1, [settings.snake[0][1]]]);
-    alive = true;
-    updateBoard();
+            if (settings.foods.length == 0) settings.foods = [getEmptyCoord()];
+            if (settings.snake.length == 0) settings.snake = [getEmptyCoord()];
+            if (settings.snake.length == 1) settings.snake.push([settings.snake[0][0] + 1, [settings.snake[0][1]]]);
+            alive = true;
+            updateBoard();
+        });
+    } else {
+        resizeBoard();
+
+        setTemplateValues("score");
+
+        if (settings.foods.length == 0) settings.foods = [getEmptyCoord()];
+        if (settings.snake.length == 0) settings.snake = [getEmptyCoord()];
+        if (settings.snake.length == 1) settings.snake.push([settings.snake[0][0] + 1, [settings.snake[0][1]]]);
+        alive = true;
+        updateBoard();
+    }
 };
 
 /**
@@ -339,6 +396,7 @@ const updateMovements = () => {
  */
 const endGame = () => {
     alive = false;
+    question = 0;
     boardCard.classList.remove("active");
     landingCard.classList.add("active");
     setTemplateValues("username");

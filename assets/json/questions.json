@@ -1,0 +1,124 @@
+{
+  "questions": [
+    {
+      "question": "Qu'est-ce que le VIH?",
+      "answers": [
+        "Une maladie",
+        "Un virus",
+        "Un animal",
+        "Des symptômes"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Le VIH est un virus.",
+      "link": "https://fr.wikipedia.org/wiki/Virus_de_l%27immunod%C3%A9ficience_humaine"
+    },
+    {
+      "question": "Comment se protéger des maladies sexuellement transmissibles?",
+      "answers": [
+        "Ne pas faire l'amour",
+        "Etre célibataire",
+        "Mettre un préservatif",
+        "Utiliser des gants"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Pour se protéger des MST, il faut mettre un préservatif.",
+      "link": "https://www.sida-info-service.org/les-ist-ne-sont-pas-a-negliger/"
+    },
+    {
+      "question": "Qu'est-ce que le sida?",
+      "answers": [
+        "Une maladie",
+        "Un virus",
+        "Un animal",
+        "Des symptômes"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Le sida est une maladie.",
+      "link": "https://fr.wikipedia.org/wiki/Syndrome_d%27immunod%C3%A9ficience_acquise"
+    },
+    {
+      "question": "Comment peut-on se soigner d'une MST?",
+      "answers": [
+        "En se faisant vacciner",
+        "En se faisant opérer",
+        "En prenant des médicaments",
+        "En se faisant tatouer"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Pour se soigner d'une MST, il faut prendre des médicaments.",
+      "link": "https://www.livi.fr/sante/infections-sexuellement-transmissibles/\n"
+    },
+    {
+      "question": "Comment attrape-t-on le VIH?",
+      "answers": [
+        "",
+        "En se faisant piquer par une moustique",
+        "",
+        ""
+      ],
+      "correctAnswer": 1,
+      "explanation": "On attrape le VIH en faisant l'amour sans préservatif avec une personne qui est porteuse du virus ou en recevant du sang contaminé.",
+      "link": "https://www.sida-info-service.org/le-vih-comment-se-transmet-il/"
+    },
+    {
+      "question": "Comment détection-t-on le VIH?",
+      "answers": [
+        "En faisant un test sanguin",
+        "En faisant un test urinaire",
+        "En faisant un test vaginal",
+        "En faisant un test rectal"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Pour détecter le VIH, il faut faire un test sanguin.",
+      "link": "https://www.ameli.fr/rhone/assure/sante/themes/vih/depistage"
+    },
+    {
+      "question": "Où peut-on se faire dépister?",
+      "answers": [
+        "Dans un hôpital",
+        "Dans un laboratoire d'analyses biologiques",
+        "Dans un champs",
+        "Quel que part"
+      ],
+      "correctAnswer": 1,
+      "explanation": "On peut se faire dépister dans un laboratoire d'analyses biologiques.",
+      "link": "https://www.sida-info-service.org/ou-faire-un-test-de-depistage/"
+    },
+    {
+      "question": "Le despistage du VIH est-il payant?",
+      "answers": [
+        "Oui",
+        "Non",
+        "50€",
+        "Gratuit si il est réalisé dans un CEGIDD"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Le dépistage du VIH n'est pas payant si il est réalisé dans un CEGIDD ou dans un centre de dépistage si vous êtes muni d'une préscripton médicale.",
+      "link": "https://www.sida-info-service.org/quel-est-le-cout-d-un-test-de/"
+    },
+    {
+      "question": "Quelle est la différence entre le VIH et le sida?",
+      "answer": [
+        "Le VIH est une maladie et le sida est un virus",
+        "Le VIH est un virus et le sida est une maladie",
+        "Le VIH est une maladie et le sida est une maladie",
+        "Le VIH est un virus et le sida est un virus"
+      ],
+      "correctAnswer": 1,
+      "explanation": "On ne parle de sida que lorsqu'une personne développe une maladie opportuniste.",
+      "link": "https://www.sida-info-service.org/difference-vih-sida/"
+    },
+    {
+      "question": "Quels sont les signes de contamination au VIH?",
+      "answers": [
+        "Des boutons",
+        "Des démangeaisons",
+        "fièvre, céphalées et autres symptômes neurologiques",
+        "fièvre, céphalées et autres symptômes neurologiques, diarrhées, vomissements, douleurs musculaires, fatigue, perte de poids"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Les symptômes les plus fréquents sont : fièvre, céphalées et autres symptômes neurologiques, adénopathies (ganglions gonflés).\n",
+      "link": "https://www.sida-info-service.org/symptomes-contamination-vih/"
+    }
+  ]
+}
