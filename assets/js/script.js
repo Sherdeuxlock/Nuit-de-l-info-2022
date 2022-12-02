@@ -48,7 +48,7 @@ let sounds = [];
 /** @type {boolean} */
 let alive = false;
 
-const head = new Image(unit, unit);
+const head = new Image();
 head.src = "/assets/images/snake_head.webp";
 
 /**
