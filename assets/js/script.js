@@ -565,7 +565,7 @@ const drawBoard = () => {
             context.drawImage(head, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
         } else if (i == settings.snake.length - 1) {
             context.drawImage(tail, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
-        } else {
+        } else if (settings.snake[i][0] != settings.snake[i + 1][0] || settings.snake[i][1] != settings.snake[i + 1][1]) {
             if (settings.snake[i + 1][0] == settings.snake[i - 1][0] && settings.snake[i + 1][0] == settings.snake[i - 1][0]) {
                 context.drawImage(bodyr, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
             } else {
