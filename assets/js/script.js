@@ -548,12 +548,13 @@ const drawBoard = () => {
         context.fillRect(food[0] * unit, food[1] * unit, unit, unit);
     }
 
+    const head = new Image(unit, unit);
+    head.src = "/assets/images/snake_head.webp";
+
     for (let i = 0; i < settings.snake.length; i++) {
         if (i == 0) {
-            
+            context.drawImage(head, settings.snake[0][0] * unit, settings.snake[0][1] * unit, unit, unit);
         }
-        context.fillStyle = "#20FF50";
-        context.fillRect(snake[0] * unit, snake[1] * unit, unit, unit);
     }
 };
 
