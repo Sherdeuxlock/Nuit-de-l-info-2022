@@ -238,7 +238,7 @@ html, body {
     }
 }
 
-@media (prefers-dark-interface) {
+@media (prefers-color-scheme: dark) {
     #root {
         background: #000;
     }
