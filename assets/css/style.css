@@ -58,7 +58,10 @@ html, body {
     display: flex;
 }
 
-#landingCard .menu button {
+#landingCard .menu button,
+#landingCard .menu a {
+    display: block;
+    text-decoration: none;
     background-color: #fff;
     border: none;
     outline: none;
@@ -72,7 +75,8 @@ html, body {
     cursor: pointer;
 }
 
-#landingCard .menu button:hover {
+#landingCard .menu button:hover,
+#landingCard .menu a:hover {
     background-color: #3060FF;
     outline: 2px solid #fff;
     color: #fff;
