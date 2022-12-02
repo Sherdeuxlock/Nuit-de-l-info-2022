@@ -237,3 +237,8 @@ html, body {
         flex-direction: column;
     }
 }
+
+img {
+    height: 10vh;
+    width: auto;
+}
