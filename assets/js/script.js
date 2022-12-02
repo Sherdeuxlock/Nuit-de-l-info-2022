@@ -33,18 +33,6 @@ let settings = {
 /** @type {number} */
 let score;
 
-/** @type {number} */
-let volume;
-
-/** @type {boolean} */
-let muted;
-
-/** @type {HTMLAudioElement} */
-let music;
-
-/** @type {HTMLAudioElement[]} */
-let sounds = [];
-
 /** @type {boolean} */
 let alive = false;
 
@@ -163,7 +151,6 @@ const setupInteractions = () => {
     const inputs = document.querySelectorAll("input");
     const settingsTogglers = document.querySelectorAll("button.settings");
     const leaderboardTogglers = document.querySelectorAll("button.leaderboard");
-    const audioTogglers = document.querySelectorAll("button.audio");
     const startTogglers = document.querySelectorAll("button.start");
     
     for (const button of buttons) button.addEventListener("click", () => playSound("assets/audio/click.wav"));
@@ -172,7 +159,6 @@ const setupInteractions = () => {
 
     for (const toggler of settingsTogglers) toggler.addEventListener("click", () => setModalOpened("settings", "toggle"));
     for (const toggler of leaderboardTogglers) toggler.addEventListener("click", () => setModalOpened("leaderboard", "toggle"));
-    for (const toggler of audioTogglers) toggler.addEventListener("click", toggleMute);
     for (const toggler of startTogglers) toggler.addEventListener("click", startGame);
 
     document.querySelectorAll('.increment-gridsize-x').forEach((element) => element.addEventListener("click", () => {
@@ -193,17 +179,6 @@ const setupInteractions = () => {
     }));
 
     document.querySelectorAll('.delete-local-cache').forEach((element) => element.addEventListener("click", () => localStorage.clear()));
-
-    document.querySelectorAll('.increment-volume').forEach((element) => element.addEventListener("click", () => {
-        if (volume + 0.04 <= 1) volume += 0.04;
-        else volume = 1;
-        updateVolume();
-    }));
-    document.querySelectorAll('.decrement-volume').forEach((element) => element.addEventListener("click", () => {
-        if (volume - 0.04 >= 0) volume -= 0.04;
-        else volume = 0;
-        updateVolume();
-    }));
 
     window.addEventListener("resize", resizeBoard);
 
@@ -227,21 +202,6 @@ const setTemplateValues = (type = undefined) => {
             if (type) break;
         case "gridsize-y":
             document.querySelectorAll(".value.value-gridsize-y").forEach((element) => element.textContent = settings.dimensions[1]);
-            if (type) break;
-        case "volume":
-            document.querySelectorAll(".value.value-volume").forEach((element) => element.textContent = Math.round(volume * 100));
-            if (type) break;
-        case "mute":
-            document.querySelectorAll(".value.value-muted").forEach((element) => {
-                element.classList.add("fas");
-                if (muted) {
-                    element.classList.remove("fa-volume-high");
-                    element.classList.add("fa-volume-xmark");
-                } else {
-                    element.classList.remove("fa-volume-xmark");
-                    element.classList.add("fa-volume-high");
-                }
-            });
             if (type) break;
         case "leaderboard":
             document.querySelectorAll(".value.value-leaderboard").forEach((element) => {
@@ -295,77 +255,6 @@ const setTemplateValues = (type = undefined) => {
         case "score":
             document.querySelectorAll(".value.value-score").forEach((element) => element.textContent = score);
             if (type) break;
-    }
-};
-
-/**
- * Sets sounds variables and starts background music
- */
-const setupSounds = () => {
-    volume = +localStorage.getItem("volume") ?? 1;
-    muted = localStorage.getItem("muted") == "true" ? true : false;
-
-    playSound("assets/audio/music.mp3", true);
-};
-
-/**
- * Toggles audio mute
- */
-const toggleMute = () => {
-    muted = !muted;
-    localStorage.setItem("muted", muted);
-    
-    if (muted) {
-        for (const sound of sounds) {
-            sound.currentTime = 99999999;
-        }
-        sounds = [];
-        if (music) music.muted = true;
-    }
-
-    if (music) music.muted = muted;
-
-    setTemplateValues("mute");
-};
-
-/**
- * Updates volume and sets template volumes according to new volume
- */
-const updateVolume = () => {
-    localStorage.setItem("volume", volume);
-
-    for (const sound of sounds) {
-        sound.volume = volume;
-    }
-    
-    if (music) music.volume = volume;
-
-    setTemplateValues("volume");
-};
-
-/**
- * Plays given sound
- * @param {string} src
- * @param {boolean} isMusic
- */
-const playSound = (src, isMusic = false) => {
-    if (isMusic || !muted) {
-        const sound = new Audio(src);
-
-        sound.volume = volume;
-        if (isMusic) {
-            sound.loop = true;
-            sound.muted = muted;
-            music = sound;
-        } else {
-            const index = sounds.push(sound);
-            sound.addEventListener("ended", () => {
-                delete sounds[index];
-                sounds = sounds.filter((value) => value != undefined);
-            });
-        }
-
-        sound.play();
     }
 };
 
