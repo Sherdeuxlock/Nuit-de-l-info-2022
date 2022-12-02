@@ -38,6 +38,7 @@ let settings = {
     foods: [],
     snake: [],
     direction: "left",
+    questions: [],
 };
 
 /** @type {number} */
