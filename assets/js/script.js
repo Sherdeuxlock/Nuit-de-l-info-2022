@@ -438,6 +438,7 @@ const endGame = () => {
         foods: [],
         snake: [],
         direction: "left",
+        questions: [],
     };
 }
 
