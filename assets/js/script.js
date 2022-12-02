@@ -530,6 +530,7 @@ const checkCollisions = () => {
             setModalOpened("question", true);
             slowed = true;
             setTemplateValues("question-title");
+            setTemplateValues("question-explanation");
             setTemplateValues("question-responses");
         }
     }
