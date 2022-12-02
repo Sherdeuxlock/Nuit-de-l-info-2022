@@ -263,6 +263,14 @@ const setTemplateValues = (type = undefined) => {
         case "question-title":
             document.querySelectorAll(".value.value-question-title").forEach((element) => settings.questions.length >= 1 && (element.textContent = settings.questions[question].question));
             if (type) break;
+        case "question-explanation":
+            document.querySelectorAll(".value.value-question-explanation").forEach((element) => {
+                if (settings.questions.length >= 1) {
+                    element.textContent = settings.questions[question].explanation;
+                    element.href = settings.questions[question].link;
+                }
+            });
+            if (type) break;
         case "question-responses":
             document.querySelectorAll(".value.value-question-responses").forEach((element) => {
                 element.innerHTML = "";
@@ -281,6 +289,12 @@ const setTemplateValues = (type = undefined) => {
                     if (i == settings.questions[question].correctAnswer) {
                         button.addEventListener("click", () => {
                             score++;
+                            setModalOpened("question", false);
+                            slowed = false;
+                            question = (question + 1) % settings.questions.length;
+                        });
+                    } else {
+                        button.addEventListener("click", () => {
                             setModalOpened("question", false);
                             slowed = false;
                             question = (question + 1) % settings.questions.length;

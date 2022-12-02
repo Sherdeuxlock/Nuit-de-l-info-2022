@@ -104,7 +104,7 @@
         "Le VIH est une maladie et le sida est une maladie",
         "Le VIH est un virus et le sida est un syndrôme"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 3,
       "explanation": "On ne parle de sida que lorsqu'une personne développe une maladie opportuniste.",
       "link": "https://www.sida-info-service.org/difference-vih-sida/"
     },

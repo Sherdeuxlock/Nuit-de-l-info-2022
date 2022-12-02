@@ -99,6 +99,7 @@ html, body {
 
 #boardCard {
     padding: 10px;
+    overflow: hidden;
 }
 
 #boardCard #board {
@@ -235,11 +236,5 @@ html, body {
     #landingCard .menu .left,
     #landingCard .menu .right {
         flex-direction: column;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    #root {
-        background: #000;
     }
 }
