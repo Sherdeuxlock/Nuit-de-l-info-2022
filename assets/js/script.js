@@ -266,7 +266,7 @@ const setTemplateValues = (type = undefined) => {
         case "question-responses":
             document.querySelectorAll(".value.value-question-responses").forEach((element) => {
                 element.innerHTML = "";
-                for (let i = 0; i < settings.questions[question].answers.length; i++) {
+                if (settings.questions.length >= 1) for (let i = 0; i < settings.questions[question].answers.length; i++) {
                     let container = document.createElement("div");
                     let left = document.createElement("div");
                     let right = document.createElement("div");
