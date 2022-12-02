@@ -109,7 +109,7 @@ const setupModals = () => {
     images.body.r.lu.src = "/assets/images/snake_body_r_leftup.webp";
     images.body.r.ld.src = "/assets/images/snake_body_r_leftdown.webp";
     images.body.r.ru.src = "/assets/images/snake_body_r_rightup.webp";
-    images.body.r.ld.src = "/assets/images/snake_body_r_rightdown.webp";
+    images.body.r.rd.src = "/assets/images/snake_body_r_rightdown.webp";
 
     images.tail.left.src = "/assets/images/snake_tail_left.webp";
     images.tail.right.src = "/assets/images/snake_tail_right.webp";
