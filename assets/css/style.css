@@ -237,3 +237,9 @@ html, body {
         flex-direction: column;
     }
 }
+
+@media (prefers-dark-interface) {
+    #root {
+        background: #000;
+    }
+}
