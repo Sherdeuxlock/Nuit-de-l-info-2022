@@ -154,6 +154,10 @@ html, body {
     color: #2040FF;
 }
 
+#modals .modal .modal-header a {
+    display: block;
+}
+
 #modals .modal .modal-header .modal-close {
     background-color: #2040FF;
     border: none;
