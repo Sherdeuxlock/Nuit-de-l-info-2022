@@ -322,6 +322,8 @@ const startGame = () => {
 
     if (settings.questions.length == 0) {
         fetch("/assets/json/questions.json").then(c => c.json()).then((data) => {
+            settings = Object.assign({}, settings, data);
+
             resizeBoard();
 
             setTemplateValues("score");
