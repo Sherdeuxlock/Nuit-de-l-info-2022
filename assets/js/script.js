@@ -278,18 +278,20 @@ const setTemplateValues = (type = undefined) => {
                     left.append(text);
 
                     let button = document.createElement("button");
-                    button.addEventListener("click", () => {
-                        score++;
-                        setModalOpened("question", false);
-                        slowed = false;
-                        question = (question + 1) % settings.questions.length;
-                    });
+                    if (i == settings.questions[question].correctAnswer) {
+                        button.addEventListener("click", () => {
+                            score++;
+                            setModalOpened("question", false);
+                            slowed = false;
+                            question = (question + 1) % settings.questions.length;
+                        });
+                    }
                     button.textContent = "Valider";
                     right.append(button);
 
                     container.append(left);
                     container.append(right);
-                    element.append();
+                    element.append(container);
                 }
             });
             if (type) break;
