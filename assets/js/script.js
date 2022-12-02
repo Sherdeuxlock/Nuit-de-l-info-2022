@@ -292,6 +292,7 @@ const setTemplateValues = (type = undefined) => {
                             setModalOpened("question", false);
                             slowed = false;
                             question = (question + 1) % settings.questions.length;
+                            setTemplateValues("score");
                         });
                     } else {
                         button.addEventListener("click", () => {
@@ -530,7 +531,6 @@ const checkCollisions = () => {
             slowed = true;
             setTemplateValues("question-title");
             setTemplateValues("question-responses");
-            setTemplateValues("score");
         }
     }
 };
