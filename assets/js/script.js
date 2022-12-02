@@ -147,15 +147,9 @@ const setModalOpened = (type, isOpened) => {
  * Sets template interactions and initializes values
  */
 const setupInteractions = () => {
-    const buttons = document.querySelectorAll("button");
-    const inputs = document.querySelectorAll("input");
     const settingsTogglers = document.querySelectorAll("button.settings");
     const leaderboardTogglers = document.querySelectorAll("button.leaderboard");
     const startTogglers = document.querySelectorAll("button.start");
-    
-    for (const button of buttons) button.addEventListener("click", () => playSound("assets/audio/click.wav"));
-    for (const input of inputs) input.addEventListener("change", () => playSound("assets/audio/click.wav"));
-    for (const input of inputs) input.addEventListener("keydown", () => playSound("assets/audio/click.wav"));
 
     for (const toggler of settingsTogglers) toggler.addEventListener("click", () => setModalOpened("settings", "toggle"));
     for (const toggler of leaderboardTogglers) toggler.addEventListener("click", () => setModalOpened("leaderboard", "toggle"));
@@ -550,6 +544,5 @@ const drawBoard = () => {
     setupModals();
     setupImages();
     setupInteractions();
-    setupSounds();
     setTemplateValues();
 })();
