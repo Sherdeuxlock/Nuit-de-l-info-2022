@@ -616,6 +616,10 @@ const drawBoard = () => {
                     break;
             }
         } else if (i == settings.snake.length - 1) {
+            let checker = settings.snake[i - 1];
+            if (checker[0] == settings.snake[i][0] && checker[1] == settings.snake[i][1]) {
+                checker = settings.snake[i - 2];
+            }
             if (settings.snake[i][0] > settings.snake[i - 1][0]) {
                 context.drawImage(images.tail.left, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
             } else if (settings.snake[i][0] < settings.snake[i - 1][0]) {
