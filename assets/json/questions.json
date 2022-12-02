@@ -33,7 +33,7 @@
         "Un syndrôme"
       ],
       "correctAnswer": 3,
-      "explanation": "Le sida est un syndrôme.",
+      "explanation": "Le sida est une maladie.",
       "link": "https://fr.wikipedia.org/wiki/Syndrome_d%27immunod%C3%A9ficience_acquise"
     },
     {
@@ -61,7 +61,7 @@
       "link": "https://www.sida-info-service.org/le-vih-comment-se-transmet-il/"
     },
     {
-      "question": "Comment se détecte le VIH?",
+      "question": "Comment détection-t-on le VIH?",
       "answers": [
         "En faisant un test sanguin",
         "En faisant un test urinaire",
@@ -98,7 +98,7 @@
     },
     {
       "question": "Quelle est la différence entre le VIH et le sida?",
-      "answers": [
+      "answer": [
         "Le VIH est une maladie et le sida est un virus",
         "Le VIH est un virus et le sida est une maladie",
         "Le VIH est une maladie et le sida est une maladie",
