@@ -298,7 +298,6 @@ const setTemplateValues = (type = undefined) => {
                         button.addEventListener("click", () => {
                             setModalOpened("question", false);
                             slowed = false;
-                            question = (question + 1) % settings.questions.length;
                         });
                     }
                     button.textContent = "Valider";
