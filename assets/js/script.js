@@ -48,17 +48,31 @@ let sounds = [];
 /** @type {boolean} */
 let alive = false;
 
-const head = new Image();
-head.src = "/assets/images/snake_head.webp";
-
-const body = new Image();
-body.src = "/assets/images/snake_body.webp";
-
-const bodyr = new Image();
-bodyr.src = "/assets/images/snake_body_r.webp";
-
-const tail = new Image();
-tail.src = "/assets/images/snake_tail.webp";
+const images = {
+    head: {
+        left: new Image(),
+        right: new Image(),
+        up: new Image(),
+        down: new Image(),
+    },
+    body: {
+        v: new Image(),
+        h: new Image(),
+        r: {
+            lu: new Image(),
+            ld: new Image(),
+            ru: new Image(),
+            rd: new Image(),
+        },
+    },
+    tail: {
+        left: new Image(),
+        right: new Image(),
+        up: new Image(),
+        down: new Image(),
+    },
+    condom: new Image(),
+};
 
 /**
  * Sets up modals
@@ -79,6 +93,31 @@ const setupModals = () => {
         for (const toggler of gameoverTogglers) toggler.addEventListener("click", () => setModalOpened("gameover", false));
     }
 };
+
+/**
+ * Sets up images
+ */
+ const setupImages = () => {
+    images.head.left.src = "/assets/images/snake_head_left.webp";
+    images.head.right.src = "/assets/images/snake_head_right.webp";
+    images.head.up.src = "/assets/images/snake_head_up.webp";
+    images.head.down.src = "/assets/images/snake_head_down.webp";
+
+    images.body.h.src = "/assets/images/snake_body_h.webp";
+    images.body.v.src = "/assets/images/snake_body_v.webp";
+
+    images.body.r.lu.src = "/assets/images/snake_body_r_leftup.webp";
+    images.body.r.ld.src = "/assets/images/snake_body_r_leftdown.webp";
+    images.body.r.ru.src = "/assets/images/snake_body_r_rightup.webp";
+    images.body.r.ld.src = "/assets/images/snake_body_r_rightdown.webp";
+
+    images.tail.left.src = "/assets/images/snake_tail_left.webp";
+    images.tail.right.src = "/assets/images/snake_tail_right.webp";
+    images.tail.up.src = "/assets/images/snake_tail_up.webp";
+    images.tail.down.src = "/assets/images/snake_tail_down.webp";
+
+    images.condom.src = "/assets/images/condom.webp";
+}
 
 /**
  * Toggles given model
@@ -562,14 +601,50 @@ const drawBoard = () => {
 
     for (let i = 0; i < settings.snake.length; i++) {
         if (i == 0) {
-            context.drawImage(head, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            switch (settings.direction) {
+                case "up":
+                    context.drawImage(images.head.up, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    break;
+                case "down":
+                    context.drawImage(images.head.down, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    break;
+                case "left":
+                    context.drawImage(images.head.left, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    break;
+                case "right":
+                    context.drawImage(images.head.right, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    break;
+            }
         } else if (i == settings.snake.length - 1) {
             context.drawImage(tail, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            if (settings.snake[i][0] > settings.snake[i - 1][0]) {
+                context.drawImage(images.tail.left, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            } else if (settings.snake[i][0] < settings.snake[i - 1][0]) {
+                context.drawImage(images.tail.right, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            } else if (settings.snake[i][1] > settings.snake[i - 1][1]) {
+                context.drawImage(images.tail.down, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            } else {
+                context.drawImage(images.tail.up, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+            }
         } else if (settings.snake[i][0] != settings.snake[i + 1][0] || settings.snake[i][1] != settings.snake[i + 1][1]) {
             if (settings.snake[i + 1][0] == settings.snake[i - 1][0] && settings.snake[i + 1][0] == settings.snake[i - 1][0]) {
-                context.drawImage(bodyr, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                if (settings.snake[i + 1][0] < settings.snake[i][0] || settings.snake[i - 1][0] < settings.snake[i][0]) {
+                    if (settings.snake[i + 1][1] < settings.snake[i][1] || settings.snake[i - 1][1] < settings.snake[i][1]) {
+                        context.drawImage(images.body.r.lu, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    } else {
+                        context.drawImage(images.body.r.ld, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    }
+                } else {
+                    if (settings.snake[i + 1][1] < settings.snake[i][1] || settings.snake[i - 1][1] < settings.snake[i][1]) {
+                        context.drawImage(images.body.r.ru, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    } else {
+                        context.drawImage(images.body.r.rd, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                    }
+                }
+            } else if (settings.snake[i - 1][0] == settings.snake[i][0]) {
+                context.drawImage(images.body.h, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
             } else {
-                context.drawImage(body, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
+                context.drawImage(images.body.v, settings.snake[i][0] * unit, settings.snake[i][1] * unit, unit, unit);
             }
         }
     }
@@ -578,6 +653,7 @@ const drawBoard = () => {
 // Starts the application
 (function() {
     setupModals();
+    setupImages();
     setupInteractions();
     setupSounds();
     setTemplateValues();
