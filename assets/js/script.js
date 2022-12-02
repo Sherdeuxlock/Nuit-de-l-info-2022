@@ -595,8 +595,7 @@ const drawBoard = () => {
     }
 
     for (const food of settings.foods) {
-        context.fillStyle = "#CC5050";
-        context.fillRect(food[0] * unit, food[1] * unit, unit, unit);
+        context.drawImage(images.condom, food[0] * unit, food[1] * unit, unit, unit);
     }
 
     for (let i = 0; i < settings.snake.length; i++) {
