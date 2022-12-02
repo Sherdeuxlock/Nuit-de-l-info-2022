@@ -260,7 +260,7 @@ const setTemplateValues = (type = undefined) => {
             document.querySelectorAll(".value.value-score").forEach((element) => element.textContent = score);
             if (type) break;
         case "question-title":
-            document.querySelectorAll(".value.value-question-title").forEach((element) => element.textContent = settings.questions[question].question);
+            document.querySelectorAll(".value.value-question-title").forEach((element) => settings.questions.length >= 1 && (element.textContent = settings.questions[question].question));
             if (type) break;
         case "question-responses":
             document.querySelectorAll(".value.value-question-responses").forEach((element) => {
