@@ -48,6 +48,9 @@ let sounds = [];
 /** @type {boolean} */
 let alive = false;
 
+const head = new Image(unit, unit);
+head.src = "/assets/images/snake_head.webp";
+
 /**
  * Sets up modals
  */
@@ -547,9 +550,6 @@ const drawBoard = () => {
         context.fillStyle = "#CC5050";
         context.fillRect(food[0] * unit, food[1] * unit, unit, unit);
     }
-
-    const head = new Image(unit, unit);
-    head.src = "/assets/images/snake_head.webp";
 
     for (let i = 0; i < settings.snake.length; i++) {
         if (i == 0) {
