@@ -6,7 +6,7 @@
         "Une maladie",
         "Un virus",
         "Un animal",
-        "Un syndrome"
+        "Un syndrôme"
       ],
       "correctAnswer": 1,
       "explanation": "Le VIH est un virus.",
@@ -30,7 +30,7 @@
         "Une maladie",
         "Un virus",
         "Un animal",
-        "Un syndrome"
+        "Un syndrôme"
       ],
       "correctAnswer": 3,
       "explanation": "Le sida est une maladie.",
@@ -102,7 +102,7 @@
         "Le VIH est une maladie et le sida est un virus",
         "Le VIH est un virus et le sida est une maladie",
         "Le VIH est une maladie et le sida est une maladie",
-        "Le VIH est un virus et le sida est un syndrome"
+        "Le VIH est un virus et le sida est un syndrôme"
       ],
       "correctAnswer": 1,
       "explanation": "On ne parle de sida que lorsqu'une personne développe une maladie opportuniste.",
