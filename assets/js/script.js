@@ -345,6 +345,7 @@ const startGame = () => {
 
     if (settings.foods.length == 0) settings.foods = [getEmptyCoord()];
     if (settings.snake.length == 0) settings.snake = [getEmptyCoord()];
+    if (settings.snake.length == 1) settings.snake.push([settings.snake[0][0] + 1, [settings.snake[0][1]]]);
     alive = true;
     updateBoard();
 };
@@ -547,7 +548,10 @@ const drawBoard = () => {
         context.fillRect(food[0] * unit, food[1] * unit, unit, unit);
     }
 
-    for (const snake of settings.snake) {
+    for (let i = 0; i < settings.snake.length; i++) {
+        if (i == 0) {
+            
+        }
         context.fillStyle = "#20FF50";
         context.fillRect(snake[0] * unit, snake[1] * unit, unit, unit);
     }
